@@ -1,0 +1,1 @@
+/home/erz/.local/share/broot/launcher/fish/br.fish
