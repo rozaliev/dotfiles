@@ -1,2 +1,3 @@
-sudo pacman -S pulseaudio polybar neovim telegram-desktop rofi alacritty maim xclip
+#!/bin/sh
+pamac install pulseaudio polybar neovim telegram-desktop rofi alacritty maim xclip
 
