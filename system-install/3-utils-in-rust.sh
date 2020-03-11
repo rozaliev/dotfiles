@@ -1,6 +1,6 @@
 #!/bin/sh
 
-pamac install bat fd
+pamac install bat fd hexyl
 
 cargo install broot procs exa bingrep
 
