@@ -17,6 +17,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'rust-lang/rust.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'machakann/vim-sandwich'
 
 call plug#end()
 " PLUGEND
@@ -76,3 +77,6 @@ let g:deoplete#enable_at_startup = 1
 
 set nu
 set tabstop=4 expandtab shiftwidth=4  
+
+
+let g:rustfmt_autosave = 1
