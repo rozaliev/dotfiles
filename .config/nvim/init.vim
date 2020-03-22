@@ -17,10 +17,40 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'rust-lang/rust.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'liuchengxu/vista.vim'
 Plug 'machakann/vim-sandwich'
-
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline'
+Plug 'Yggdroot/indentLine'
+Plug 'preservim/nerdcommenter'
+Plug 'liuchengxu/vim-which-key'
 call plug#end()
+
 " PLUGEND
+
+"vim-which-key
+let g:which_key_map =  {}
+
+nnoremap <silent> <leader> :<c-u>WhichKey '\'<CR>
+nnoremap <silent> <leader>/ :<c-u>WhichKey ''<CR>
+vnoremap <silent> <leader> :<c-u>WhichKeyVisual '\'<CR>
+vnoremap <silent> <leader>/ :<c-u>WhichKeyVisual ''<CR>
+set timeoutlen=500
+
+let g:which_key_map['\'] = { 'name' : '<leader>' }
+let g:which_key_map['\'].f = { 'name' : '+file' }
+
+nnoremap <silent> <leader>fs :update<CR>
+let g:which_key_map['\'].f.s = 'save-file'
+
+
+let g:which_key_map['\'].r = {'name': '+replace'}
+vnoremap <leader>ra "hy:%sno%<C-r>h%%g<left><left>
+
+let g:which_key_map['\'].r.a = 'replace all'
+
+vnoremap <leader>rc "hy:%sno%<C-r>h%%gc<left><left><left>
+let g:which_key_map['\'].r.c = 'replace with confirmation'
 
 
 augroup filetype_rust
@@ -42,18 +72,26 @@ let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.l
 
 set hidden
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+
+let g:which_key_map.g = {'name': '+goto'}
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+let g:which_key_map.g.d = 'go o definition'
+
+nnoremap <silent> <leader>ff :call LanguageClient#textDocument_formatting()<CR>
+
+let g:which_key_map['\'].f.f = 'format file'
 
 nnoremap <C-P> :FZF<CR>
+
 
 " copy yanks to system clipboard
 set clipboard+=unnamedplus
 
+" Tab nav for deoplete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " Enable theming support
 if (has("termguicolors"))
- set termguicolors
+	set termguicolors
 endif
 
 " Theme
@@ -75,8 +113,30 @@ nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 let g:deoplete#enable_at_startup = 1
 
 
-set nu
-set tabstop=4 expandtab shiftwidth=4  
+set tabstop=4 noexpandtab shiftwidth=4  
 
 
 let g:rustfmt_autosave = 1
+
+
+set number relativenumber
+set nu rnu
+
+" IndentLine
+let g:indentLine_color_term = 239
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_leadingSpaceEnabled = 1
+let g:indentLine_leadingSpaceChar = '·' 
+
+"No mode line
+set noshowmode
+
+"NerdCommenter
+let g:NERDDefaultAlign = 'left'
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+
+
+call which_key#register('', "g:which_key_map")
+let g:which_key_map_leader = g:which_key_map['\']
+call which_key#register('\', "g:which_key_map_leader")

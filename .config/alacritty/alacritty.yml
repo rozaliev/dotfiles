@@ -33,3 +33,9 @@ colors:
     magenta: '#ff6ac1'
     cyan:    '#9aedfe'
     white:   '#f1f1f0'
+
+
+key_bindings:
+      - { key: Up,    mods: Shift,   action: ScrollLineUp }
+      - { key: Down,    mods: Shift,   action: ScrollLineDown }
+        
