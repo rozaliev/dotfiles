@@ -14,7 +14,11 @@ Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
+
+"langs
 Plug 'rust-lang/rust.vim'
+Plug 'pangloss/vim-javascript'
+"end langs
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'liuchengxu/vista.vim'
@@ -27,6 +31,8 @@ Plug 'liuchengxu/vim-which-key'
 call plug#end()
 
 " PLUGEND
+
+let g:vim_json_conceal=0
 
 "vim-which-key
 let g:which_key_map =  {}
@@ -62,6 +68,8 @@ augroup END
 set signcolumn=yes
 
 let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'typescript': ['javascript-typescript-stdio'],
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ }
 let $RUST_BACKTRACE = 1
@@ -113,7 +121,7 @@ nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 let g:deoplete#enable_at_startup = 1
 
 
-set tabstop=4 noexpandtab shiftwidth=4  
+set tabstop=4 expandtab shiftwidth=4  
 
 
 let g:rustfmt_autosave = 1
