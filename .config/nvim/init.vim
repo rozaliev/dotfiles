@@ -32,6 +32,11 @@ call plug#end()
 
 " PLUGEND
 
+" rebind undo from 'u' to "<leader>u'
+map u <Nop>
+map U <Nop>
+map <leader>u <Undo>
+
 let g:vim_json_conceal=0
 
 "vim-which-key
@@ -70,7 +75,7 @@ set signcolumn=yes
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'rust': ['rust-analyzer'],
     \ }
 let $RUST_BACKTRACE = 1
 let g:LanguageClient_loggingLevel = 'INFO'
