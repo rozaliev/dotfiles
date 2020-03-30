@@ -1,0 +1,13 @@
+[keyboard]
+command=xkblayout-state print "%s" | cut -f1
+interval=3
+
+[volume]
+command=scripts/volume/volume
+interval=once
+signal=10
+
+[datetime]
+command=scripts/datetime/datetime
+interval=60
+

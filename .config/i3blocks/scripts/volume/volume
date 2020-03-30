@@ -1,0 +1,7 @@
+#!/bin/fish
+
+if test (pulsemixer --get-mute) = 0
+    echo "♪: "(pulsemixer --get-volume | cut -f 1 -d ' ')"% "
+else 
+    echo "♪: muted"
+end

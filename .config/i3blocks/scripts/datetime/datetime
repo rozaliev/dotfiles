@@ -1,0 +1,6 @@
+#!/bin/fish
+
+echo (date +"%a %d.%m.%y %l:%M%p")"  "
+if test "$button" = 1
+    # add calendar
+end
