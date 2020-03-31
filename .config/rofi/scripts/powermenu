@@ -3,7 +3,7 @@ set items echo " Lock| Suspend| Logout| Reboot| Shutdown"
 set result ($items | rofi -sep '|' -dmenu -i -p 'System' -width 12 -hide-scrollbar -line-padding 4 -padding 20 -lines 5)
 
 
-switch mresult 
+switch $result 
 case "*Lock"
     i3lock
 case "*Logout"

@@ -1,4 +1,4 @@
-
+set termguicolors
 
 
 " PLUGBEGIN
@@ -15,9 +15,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 
-"langs
+"langs and syntax
 Plug 'rust-lang/rust.vim'
 Plug 'pangloss/vim-javascript'
+Plug 'mboughaba/i3config.vim'
 "end langs
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -28,9 +29,16 @@ Plug 'vim-airline/vim-airline'
 Plug 'Yggdroot/indentLine'
 Plug 'preservim/nerdcommenter'
 Plug 'liuchengxu/vim-which-key'
+Plug 'chrisbra/Colorizer'
 call plug#end()
-
 " PLUGEND
+
+
+
+let g:colorizer_auto_color = 1
+let g:colorizer_skip_comments = 1
+let g:colorizer_colornames = 0
+autocmd BufEnter,BufLeave * ColorHighlight
 
 " rebind undo from 'u' to "<leader>u'
 map u <Nop>
