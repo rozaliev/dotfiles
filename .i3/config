@@ -28,7 +28,7 @@ font xft:URWGothic-Book 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -367,3 +367,5 @@ bar {
 ## language
 exec_always "setxkbmap -layout us,ru -option grp:win_space_toggle"
 
+## picom
+exec picom --config ~/.config/picom.conf -b

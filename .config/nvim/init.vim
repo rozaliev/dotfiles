@@ -1,14 +1,10 @@
 set termguicolors
 
-
 " PLUGBEGIN
 call plug#begin()
 
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
@@ -21,7 +17,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'mboughaba/i3config.vim'
 "end langs
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'liuchengxu/vista.vim'
 Plug 'machakann/vim-sandwich'
 Plug 'airblade/vim-gitgutter'
@@ -40,6 +35,9 @@ let g:colorizer_skip_comments = 1
 let g:colorizer_colornames = 0
 autocmd BufEnter,BufLeave * ColorHighlight
 
+" unbind recording
+map q <Nop>
+
 " rebind undo from 'u' to "<leader>u'
 map u <Nop>
 map U <Nop>
@@ -52,8 +50,10 @@ let g:which_key_map =  {}
 
 nnoremap <silent> <leader> :<c-u>WhichKey '\'<CR>
 nnoremap <silent> <leader>/ :<c-u>WhichKey ''<CR>
+nnoremap <silent> <space> :<c-u>WhichKey '<space>'<CR>
 vnoremap <silent> <leader> :<c-u>WhichKeyVisual '\'<CR>
 vnoremap <silent> <leader>/ :<c-u>WhichKeyVisual ''<CR>
+vnoremap <silent> <space> :<c-u>WhichKeyVisual '<space>'<CR>
 set timeoutlen=500
 
 let g:which_key_map['\'] = { 'name' : '<leader>' }
@@ -77,43 +77,14 @@ augroup filetype_rust
     autocmd BufReadPost *.rs setlocal filetype=rust
 augroup END
 
-" Always draw sign column. Prevent buffer moving when adding/deleting sign.
-set signcolumn=yes
-
-let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'typescript': ['javascript-typescript-stdio'],
-    \ 'rust': ['rust-analyzer'],
-    \ }
-let $RUST_BACKTRACE = 1
-let g:LanguageClient_loggingLevel = 'INFO'
-let g:LanguageClient_virtualTextPrefix = ''
-let g:LanguageClient_loggingFile =  expand('~/.local/share/nvim/LanguageClient.log')
-let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
-
-set hidden
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 
 let g:which_key_map.g = {'name': '+goto'}
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-let g:which_key_map.g.d = 'go o definition'
-
-nnoremap <silent> <leader>ff :call LanguageClient#textDocument_formatting()<CR>
-
-let g:which_key_map['\'].f.f = 'format file'
 
 nnoremap <C-P> :FZF<CR>
 
 
 " copy yanks to system clipboard
 set clipboard+=unnamedplus
-
-" Tab nav for deoplete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" Enable theming support
-if (has("termguicolors"))
-	set termguicolors
-endif
 
 " Theme
 syntax enable
@@ -130,15 +101,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Toggle
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 
-" deoplete
-let g:deoplete#enable_at_startup = 1
-
 
 set tabstop=4 expandtab shiftwidth=4  
-
-
-let g:rustfmt_autosave = 1
-
 
 set number relativenumber
 set nu rnu
@@ -157,6 +121,121 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 
+
+" for coc.nvim
+set hidden
+set nobackup
+set nowritebackup
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Mappings using CoCList:
+" Show all diagnostics.
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" Formatting selected code.
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current line.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Introduce function text object
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use <TAB> for selections ranges.
+" NOTE: Requires 'textDocument/selectionRange' support from the language server.
+" coc-tsserver, coc-python are the examples of servers that support it.
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+
+nnoremap <silent> <leader>ff :Format<CR>
+let g:which_key_map['\'].f.f = 'format buffer'
 
 call which_key#register('', "g:which_key_map")
 let g:which_key_map_leader = g:which_key_map['\']
