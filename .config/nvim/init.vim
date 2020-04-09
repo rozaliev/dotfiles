@@ -8,7 +8,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 
 "langs and syntax
@@ -20,7 +19,6 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'liuchengxu/vista.vim'
 Plug 'machakann/vim-sandwich'
 Plug 'airblade/vim-gitgutter'
-Plug 'vim-airline/vim-airline'
 Plug 'Yggdroot/indentLine'
 Plug 'preservim/nerdcommenter'
 Plug 'liuchengxu/vim-which-key'
@@ -58,6 +56,7 @@ set timeoutlen=500
 
 let g:which_key_map['\'] = { 'name' : '<leader>' }
 let g:which_key_map['\'].f = { 'name' : '+file' }
+let g:which_key_map['\'].n = { 'name' : '+clear' }
 
 nnoremap <silent> <leader>fs :update<CR>
 let g:which_key_map['\'].f.s = 'save-file'
@@ -71,6 +70,12 @@ let g:which_key_map['\'].r.a = 'replace all'
 vnoremap <leader>rc "hy:%sno%<C-r>h%%gc<left><left><left>
 let g:which_key_map['\'].r.c = 'replace with confirmation'
 
+nnoremap <leader>nh :noh<CR>
+let g:which_key_map['\'].n.h = 'clear highlight'
+
+
+nnoremap <leader>fd :GitFiles?<CR>
+let g:which_key_map['\'].f.d = 'show diff'
 
 augroup filetype_rust
     autocmd!
@@ -91,18 +96,17 @@ syntax enable
 colorscheme dracula
 
 
-" Nerdtree
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeIgnore = []
-let g:NERDTreeStatusline = ''
-" Automaticaly close nvim if NERDTree is only thing left open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" Toggle
-nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+" Toggle filemanager
+nnoremap <silent> <C-b> :Lex<CR>
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
 
 
 set tabstop=4 expandtab shiftwidth=4  
+
+set smartcase
+set ignorecase
 
 set number relativenumber
 set nu rnu
