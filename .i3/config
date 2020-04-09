@@ -368,4 +368,4 @@ bar {
 exec_always "setxkbmap -layout us,ru -option grp:win_space_toggle"
 
 ## picom
-exec picom --config ~/.config/picom.conf -b
+# exec picom --config ~/.config/picom.conf -b

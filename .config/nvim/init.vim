@@ -23,6 +23,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'preservim/nerdcommenter'
 Plug 'liuchengxu/vim-which-key'
 Plug 'chrisbra/Colorizer'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 " PLUGEND
 
