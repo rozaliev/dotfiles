@@ -16,7 +16,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'mboughaba/i3config.vim'
 "end langs
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'liuchengxu/vista.vim'
 Plug 'machakann/vim-sandwich'
 Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine'
@@ -40,7 +39,7 @@ map q <Nop>
 " rebind undo from 'u' to "<leader>u'
 map u <Nop>
 map U <Nop>
-map <leader>u <Undo>
+map <space>u <Undo>
 
 let g:vim_json_conceal=0
 
@@ -103,6 +102,9 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 
+"hard vim
+noremap <PageUp> <Nop>
+noremap <PageDown> <Nop>
 
 set tabstop=4 expandtab shiftwidth=4  
 
