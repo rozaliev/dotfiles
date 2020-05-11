@@ -17,7 +17,10 @@ Plug 'mboughaba/i3config.vim'
 "end langs
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'machakann/vim-sandwich'
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'junegunn/gv.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'preservim/nerdcommenter'
 Plug 'liuchengxu/vim-which-key'

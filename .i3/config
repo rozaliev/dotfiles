@@ -370,7 +370,7 @@ bar {
 ## language
 exec_always "setxkbmap -layout 'us,ru,us(workman)' -option grp:win_space_toggle"
 # map caps to backspace
-exec_always "setxkbmap -option caps:backspace"
+exec_always "setxkbmap -option caps:none"
 
 ## picom
 # exec picom --config ~/.config/picom.conf -b
