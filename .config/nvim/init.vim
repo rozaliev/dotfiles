@@ -48,6 +48,9 @@ map q <Nop>
 
 let g:vim_json_conceal=0
 
+" hop
+lua require'hop'.setup { keys = 'tnhesoairudpwf', term_seq_bias = 0.5 }
+
 "vim-which-key
 call which_key#register('<Space>', "g:which_key_map")
 
@@ -78,6 +81,8 @@ let g:which_key_map.n.h = 'clear highlight'
 
 nnoremap <leader>fd :GitFiles?<CR>
 let g:which_key_map.f.d = 'show diff'
+
+nnoremap " :HopWord<CR>
 
 augroup filetype_rust
     autocmd!
