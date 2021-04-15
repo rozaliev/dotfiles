@@ -1,5 +1,11 @@
 set termguicolors
 
+nnoremap <SPACE> <Nop>
+let mapleader = " "
+
+nnoremap U <C-R>
+
+
 " PLUGBEGIN
 call plug#begin()
 
@@ -25,6 +31,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'preservim/nerdcommenter'
 Plug 'liuchengxu/vim-which-key'
 Plug 'chrisbra/Colorizer'
+Plug 'phaazon/hop.nvim'
 Plug 'vim-airline/vim-airline'
 call plug#end()
 " PLUGEND
@@ -39,54 +46,44 @@ autocmd BufEnter,BufLeave * ColorHighlight
 " unbind recording
 map q <Nop>
 
-" rebind undo from 'u' to "<leader>u'
-map u <Nop>
-map U <Nop>
-map <space>u <Undo>
-
 let g:vim_json_conceal=0
 
 "vim-which-key
-let g:which_key_map =  {}
+call which_key#register('<Space>', "g:which_key_map")
 
-nnoremap <silent> <leader> :<c-u>WhichKey '\'<CR>
-nnoremap <silent> <leader>/ :<c-u>WhichKey ''<CR>
-nnoremap <silent> <space> :<c-u>WhichKey '<space>'<CR>
-vnoremap <silent> <leader> :<c-u>WhichKeyVisual '\'<CR>
+nnoremap <silent> <leader> :<c-u>WhichKey '<space>'<CR>
 vnoremap <silent> <leader>/ :<c-u>WhichKeyVisual ''<CR>
-vnoremap <silent> <space> :<c-u>WhichKeyVisual '<space>'<CR>
 set timeoutlen=500
 
-let g:which_key_map['\'] = { 'name' : '<leader>' }
-let g:which_key_map['\'].f = { 'name' : '+file' }
-let g:which_key_map['\'].n = { 'name' : '+clear' }
+let g:which_key_map =  {}
+
+let g:which_key_map.f = { 'name' : '+file' }
+let g:which_key_map.n = { 'name' : '+clear' }
 
 nnoremap <silent> <leader>fs :update<CR>
-let g:which_key_map['\'].f.s = 'save-file'
+let g:which_key_map.f.s = 'save-file'
 
 
-let g:which_key_map['\'].r = {'name': '+replace'}
+let g:which_key_map.r = {'name': '+replace'}
 vnoremap <leader>ra "hy:%sno%<C-r>h%%g<left><left>
 
-let g:which_key_map['\'].r.a = 'replace all'
+let g:which_key_map.r.a = 'replace all'
 
 vnoremap <leader>rc "hy:%sno%<C-r>h%%gc<left><left><left>
-let g:which_key_map['\'].r.c = 'replace with confirmation'
+let g:which_key_map.r.c = 'replace with confirmation'
 
 nnoremap <leader>nh :noh<CR>
-let g:which_key_map['\'].n.h = 'clear highlight'
+let g:which_key_map.n.h = 'clear highlight'
 
 
 nnoremap <leader>fd :GitFiles?<CR>
-let g:which_key_map['\'].f.d = 'show diff'
+let g:which_key_map.f.d = 'show diff'
 
 augroup filetype_rust
     autocmd!
     autocmd BufReadPost *.rs setlocal filetype=rust
 augroup END
 
-
-let g:which_key_map.g = {'name': '+goto'}
 
 nnoremap <C-P> :FZF<CR>
 
@@ -104,10 +101,6 @@ nnoremap <silent> <C-b> :Lex<CR>
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
-
-"hard vim
-noremap <PageUp> <Nop>
-noremap <PageDown> <Nop>
 
 set tabstop=4 expandtab shiftwidth=4  
 
@@ -154,6 +147,9 @@ function! s:check_back_space() abort
 endfunction
 inoremap <silent><expr> <c-space> coc#refresh()
 
+" Trigger completion
+inoremap <silent><expr> <c-space> coc#refresh()
+
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
@@ -183,25 +179,21 @@ nmap <leader>rn <Plug>(coc-rename)
 
 " Mappings using CoCList:
 " Show all diagnostics.
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <leader>oa  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent> <leader>oe  :<C-u>CocList extensions<cr>
 " Show commands.
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <leader>oc  :<C-u>CocList commands<cr>
 " Find symbol of current document.
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <leader>oo  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <leader>os  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent> <leader>oj  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+nnoremap <silent> <leader>ok  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-" Formatting selected code.
-" xmap <leader>f  <Plug>(coc-format-selected)
-" nmap <leader>f  <Plug>(coc-format-selected)
+nnoremap <silent> <leader>op  :<C-u>CocListResume<CR>
 
 augroup mygroup
   autocmd!
@@ -211,42 +203,12 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
 
-" Remap keys for applying codeAction to the current line.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
 
-" Introduce function text object
-" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
-
-" Use <TAB> for selections ranges.
-" NOTE: Requires 'textDocument/selectionRange' support from the language server.
-" coc-tsserver, coc-python are the examples of servers that support it.
-" nmap <silent> <TAB> <Plug>(coc-range-select)
-" xmap <silent> <TAB> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-
 nnoremap <silent> <leader>ff :Format<CR>
-let g:which_key_map['\'].f.f = 'format buffer'
+let g:which_key_map.f.f = 'format buffer'
 
-call which_key#register('', "g:which_key_map")
-let g:which_key_map_leader = g:which_key_map['\']
-call which_key#register('\', "g:which_key_map_leader")

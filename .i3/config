@@ -108,10 +108,8 @@ bindsym $mod+q split toggle
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
@@ -368,9 +366,7 @@ bar {
 }
 
 ## language
-exec_always "setxkbmap -layout 'us,ru,us(workman)' -option grp:win_space_toggle"
-# map caps to backspace
-exec_always "setxkbmap -option caps:none"
+exec_always "setxkbmap -layout 'us,ru' -option grp:win_space_toggle"
 
 ## picom
 # exec picom --config ~/.config/picom.conf -b
