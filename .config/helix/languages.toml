@@ -1,0 +1,66 @@
+[language-server]
+vscode-css-language-server = { command = "vscode-css-language-server", args = ["--stdio"], config = { "provideFormatter" = true }}
+vscode-html-language-server = { command = "vscode-html-language-server", args = ["--stdio"], config = { provideFormatter = true } }
+
+[language-server.emmet-ls]
+args = ["--stdio"]
+command="emmet-ls"
+
+[language-server.ltex]
+command = "ltex-ls"
+config = { ltex.languageToolHttpServerUri = "http://localhost:39393" }
+
+[language-server.tailwind-hack]
+# command = "tailwindcss-language-server"
+command = "/Users/erz/Documents/work/code/t/tailwindcss-intellisense/packages/tailwindcss-language-server/bin/tailwindcss-language-server"
+args = ["--stdio"]
+config = { tailwindCSS.experimental = { classRegex = ["class: \"(.*)\""] }, tailwindCSS.includeLanguages = { "rust" = "html" } }
+timeout = 3
+
+
+[language-server.tailwind]
+# command = "tailwindcss-language-server"
+command = "/Users/erz/Documents/work/code/t/tailwindcss-intellisense/packages/tailwindcss-language-server/bin/tailwindcss-language-server"
+args = ["--stdio"]
+config = {}
+timeout = 3
+
+[[language]]
+name = "markdown"
+language-servers = ["ltex", "marksman"]
+file-types = ["md", "txt"]
+scope = "source.markdown"
+roots = []
+
+[[language]]
+name = "tailwind"
+scope = "text.html"
+injection-regex = "tailwind"
+file-types = ["html"]
+grammar = "html"
+roots = ["tailwind.config.js"]
+language-servers = [ "tailwind" ]
+auto-format = true
+
+[[language]]
+name = "html"
+scope = "text.html.basic"
+injection-regex = "html"
+file-types = ["html"]
+language-servers = ["tailwind", "vscode-html-language-server"]
+roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json"]
+auto-format = true
+indent = { tab-width = 4, unit = "\t" }
+formatter = { command = 'prettier', args = ["--parser", "html", "--plugin-search-dir", "/Users/erz/.npm-packages/lib" ]}
+
+[[language]]
+name = "rust"
+scope = "source.rust"
+injection-regex = "rust"
+file-types = ["rs"]
+roots = ["Cargo.toml", "Cargo.lock"]
+auto-format = true
+comment-token = "//"
+# language-servers = [ "rust-analyzer" ]
+language-servers = [ "tailwind-hack" ]
+indent = { tab-width = 4, unit = "    " }

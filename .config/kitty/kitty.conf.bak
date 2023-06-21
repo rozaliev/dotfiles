@@ -1,0 +1,6 @@
+confirm_os_window_close 0
+font_family Jet Brains Mono
+font_size 13.0
+shell fish
+hide_window_decorations yes
+window_padding_width 8

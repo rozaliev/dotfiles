@@ -1,0 +1,66 @@
+theme = "mytheme"
+
+[editor]
+scroll-lines = 1
+cursorline = true
+auto-save = false
+auto-format = true
+completion-trigger-len = 1
+true-color = true
+color-modes = true
+auto-pairs = true
+rulers = [100,120]
+idle-timeout = 50
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.indent-guides]
+render = true
+character = "┊"
+skip-levels = 1
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+[editor.statusline]
+left = ["mode", "spinner", "file-type", "total-line-numbers", "file-encoding"]
+center = ["file-name"]
+right = ["selections", "primary-selection-length", "position", "position-percentage", "spacer", "diagnostics", "workspace-diagnostics", "version-control"]
+
+[editor.file-picker]
+# hidden = false
+
+[editor.soft-wrap]
+enable = true
+wrap-at-text-width = true
+
+[editor.jump-mode]
+dim-during-jump = true
+num-chars-before-label = 2
+jump-keys = "ntehosia"
+
+[keys.normal.space]
+w = ":w"
+q = ":q"
+
+[keys.normal]
+q = "no_op"
+Q = "no_op"
+B = "extend_prev_word_start"
+W = "extend_next_word_end"
+X = "extend_line_above"
+"C-A-t" = "flip_selections"
+y = "yank_main_selection_to_clipboard"
+p = "paste_clipboard_after"
+P = "paste_clipboard_before"
+
+[keys.insert]
+"C-space" = "completion"

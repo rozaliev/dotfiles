@@ -1,0 +1,10 @@
+inherits = "dracula"
+
+
+"ui.virtual.indent-guide" = { fg = "virt-symb"} 
+"ui.virtual.whitespace" = { fg = "virt-symb"} 
+"ui.virtual.inlay-hint" = { fg = "virt-text" }
+
+[palette]
+virt-symb = "#3E3052"
+virt-text = "#564372"

@@ -1,0 +1,21 @@
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+yabai -m config debug_output on
+yabai -m config mouse_follows_focus off
+yabai -m config focus_follow_mouse off
+yabai -m config window_placement second_child
+yabai -m config window_gap 5
+yabai -m config layout bsp
+yabai -m config left_padding 5
+yabai -m config right_padding 5
+yabai -m config bottom_padding 5
+yabai -m config window_border off
+yabai -m config widow_border_blur off
+yabai -m config window_border_width 2
+yabai -m config active_window_border_color 0xFF1EEBDD
+# yabai -m config normal_window_border_color 0xFF415AC
+
+
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Ukelele$" manage=off

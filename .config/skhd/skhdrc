@@ -1,0 +1,42 @@
+# apps
+alt + cmd - return : kitty --single-instance -d ~
+
+
+# windows nav
+alt + cmd - left: yabai -m window --focus west
+alt + cmd - right: yabai -m window --focus east
+alt + cmd - up: yabai -m window --focus north
+alt + cmd - down: yabai -m window --focus south
+
+
+# windows move
+alt + shift + cmd - left: yabai -m window --warp west
+alt + shift + cmd - right: yabai -m window --warp east
+alt + shift + cmd - up: yabai -m window --warp north
+alt + shift + cmd - down: yabai -m window --warp south
+
+# windows move spaces
+alt + shift + cmd - 1: yabai -m window --space 1
+alt + shift + cmd - 2: yabai -m window --space 2
+alt + shift + cmd - 3: yabai -m window --space 3
+alt + shift + cmd - 4: yabai -m window --space 4
+alt + shift + cmd - 5: yabai -m window --space 5
+alt + shift + cmd - 6: yabai -m window --space 6
+alt + shift + cmd - 7: yabai -m window --space 7
+alt + shift + cmd - 8: yabai -m window --space 8
+
+# spaces nav
+alt + cmd - 1: yabai -m space --focus 1
+alt + cmd - 2: yabai -m space --focus 2
+alt + cmd - 3: yabai -m space --focus 3
+alt + cmd - 4: yabai -m space --focus 4
+alt + cmd - 5: yabai -m space --focus 5
+alt + cmd - 6: yabai -m space --focus 6
+alt + cmd - 7: yabai -m space --focus 7
+alt + cmd - 8: yabai -m space --focus 8
+
+# fullscreen
+alt + cmd - f: yabai -m window --toggle zoom-fullscreen
+
+
+
