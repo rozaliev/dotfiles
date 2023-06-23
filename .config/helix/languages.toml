@@ -61,6 +61,18 @@ file-types = ["rs"]
 roots = ["Cargo.toml", "Cargo.lock"]
 auto-format = true
 comment-token = "//"
-# language-servers = [ "rust-analyzer" ]
-language-servers = [ "tailwind-hack" ]
+language-servers = [ "tailwind-hack", "rust-analyzer" ]
 indent = { tab-width = 4, unit = "    " }
+
+# [[language]]
+# name = "rsx"
+# scope = "source.dioxus"
+# injection-regex = "rsx"
+# grammar = "rust"
+# file-types = ["rs"]
+# roots = ["Dioxus.toml"]
+# auto-format = true
+# comment-token = "//"
+# language-servers = [ "rust-analyzer", "tailwind-hack" ]
+# indent = { tab-width = 4, unit = "    " }
+# # formatter = { command = "dioxus", args = ["fmt"] }

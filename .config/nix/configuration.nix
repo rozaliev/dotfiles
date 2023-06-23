@@ -50,6 +50,8 @@
     languagetool
     ltex-ls
     fasttext
+    trunk
+    pkg-config
   ];
 
 
@@ -77,6 +79,7 @@
   homebrew.brews = [
     "yabai"
     "skhd"
+    "openssl@3"
   ];
   homebrew.casks = [
     "firefox"
