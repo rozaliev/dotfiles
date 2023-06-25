@@ -1,8 +1,8 @@
 <?xml version="1.1" encoding="UTF-8"?>
 <!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">
 <!--Created by Ukelele version 359 on 2023-06-13 at 11:20 (GMT+3)-->
-<!--Last edited by Ukelele version 359 on 2023-06-13 at 15:17 (GMT+3)-->
-<keyboard group="126" id="-28532" name="RU mine new" maxout="1">
+<!--Last edited by Ukelele version 359 on 2023-06-23 at 19:45 (GMT+3)-->
+<keyboard group="126" id="-4970" name="Russian (erz)" maxout="1">
     <layouts>
         <layout first="0" last="17" mapSet="ANSI" modifiers="Modifiers"/>
         <layout first="18" last="18" mapSet="JIS" modifiers="Modifiers"/>

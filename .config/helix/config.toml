@@ -62,6 +62,7 @@ y = "yank_main_selection_to_clipboard"
 p = "paste_clipboard_after"
 P = "paste_clipboard_before"
 d = ["yank_main_selection_to_clipboard", "delete_selection"]
+R = [":clipboard-paste-replace"]
 
 [keys.insert]
 "C-space" = "completion"
