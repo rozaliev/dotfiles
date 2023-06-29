@@ -52,6 +52,8 @@
     fasttext
     trunk
     pkg-config
+    gitoxide
+    zk
   ];
 
 
@@ -80,6 +82,7 @@
     "yabai"
     "skhd"
     "openssl@3"
+    "yq"
   ];
   homebrew.casks = [
     "firefox"
