@@ -38,7 +38,7 @@ center = ["file-modification-indicator","file-name"]
 right = ["selections", "primary-selection-length", "position", "position-percentage", "spacer", "diagnostics", "workspace-diagnostics", "version-control"]
 
 [editor.file-picker]
-# hidden = false
+hidden = false
 
 [editor.soft-wrap]
 enable = true

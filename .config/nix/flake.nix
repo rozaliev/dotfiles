@@ -17,9 +17,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    helix.url = "github:rozaliev/helix/jump-rebase";
-    
-    
   };
 
   outputs = inputs@ { nixpkgs, home-manager, nurpkgs, darwin, mkAlias, ... }:

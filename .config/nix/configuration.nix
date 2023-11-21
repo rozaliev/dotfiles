@@ -35,7 +35,6 @@
     qbittorrent
     rnix-lsp
     jetbrains-mono
-    exa    
     bat
     gitui
     speedtest-rs
@@ -54,6 +53,8 @@
     pkg-config
     gitoxide
     zk
+    jujutsu
+    discord
   ];
 
 
@@ -83,6 +84,8 @@
     "skhd"
     "openssl@3"
     "yq"
+    "zig"
+    "exercism"
   ];
   homebrew.casks = [
     "firefox"

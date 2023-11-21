@@ -99,12 +99,11 @@ in
 
   helix = { 
     enable = true;
-    package = inputs.helix.packages.${pkgs.system}.default;
   };
   git = {
     enable = true;
-    userName = "Evgeny Priestley";
-    userEmail = "eugene.priestley@gmail.com";
+    userName = "Evgeny Rozaliev";
+    userEmail = "rozaliev@gmail.com";
   };
 
 
