@@ -44,10 +44,10 @@ hidden = false
 enable = true
 wrap-at-text-width = true
 
-[editor.jump-mode]
-dim-during-jump = true
-num-chars-before-label = 2
-jump-keys = "ntehosia"
+# [editor.jump-mode]
+# dim-during-jump = true
+# num-chars-before-label = 2
+# jump-keys = "ntehosia"
 
 [keys.normal.space]
 w = ":w"
@@ -65,6 +65,7 @@ Q = ":q"
 F = "file_picker_in_current_buffer_directory" # useful for accessing sibling files rather than a file tree
 "." = ":toggle-option file-picker.git-ignore" # toggle seeing files hidden with the .gitignore in file pickers,
 "=" = ":format"
+o = "file_picker_in_current_buffer_directory"
 
 [keys.normal]
 q = "no_op"

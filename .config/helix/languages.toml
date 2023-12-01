@@ -76,3 +76,14 @@ indent = { tab-width = 4, unit = "    " }
 # language-servers = [ "rust-analyzer", "tailwind-hack" ]
 # indent = { tab-width = 4, unit = "    " }
 # # formatter = { command = "dioxus", args = ["fmt"] }
+
+
+[language-server.gopls.config]
+env = { GOPACKAGESDRIVER = './common/bazel/tools/go/gopackagesdriver.sh', GOROOT = '/Users/erz/Documents/work/urus_23/monorepo/bazel-monorepo/external/go_sdk'}
+gofumpt     = true
+staticcheck = true
+local = "github.com/my/mypkg"
+directoryFilters = ["-bazel-bin","-bazel-out","-bazel-testlogs","-bazel-mypkg"]
+usePlaceholders = true
+semanticTokens = true
+codelenses = {gc_details=false, generate=false, regenerate_cgo=false, tidy=false, upgrade_dependency=false, vendor=false}

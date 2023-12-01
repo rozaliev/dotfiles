@@ -31,7 +31,6 @@
     ripgrep
     peco
     fd
-    mpv
     qbittorrent
     rnix-lsp
     jetbrains-mono
@@ -55,6 +54,19 @@
     zk
     jujutsu
     discord
+    jdk17
+    graphviz
+    gnuplot
+    wget
+    go
+    gopls
+    golangci-lint-langserver
+    vscode
+    buck2
+    bazel-buildtools
+    mpv
+    tokei
+    arcanist
   ];
 
 
@@ -86,11 +98,15 @@
     "yq"
     "zig"
     "exercism"
+    "bazelisk"
+    "lima"
+    "sapling"
   ];
   homebrew.casks = [
     "firefox"
     "obsidian"
     "telegram-desktop"
+    "mattermost"
   ];
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
