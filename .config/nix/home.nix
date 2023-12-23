@@ -86,7 +86,6 @@ in
   ];
 
   programs = {
-    broot.enable = true;
     fzf.enable = true;
     htop = {
       enable = true;
@@ -114,6 +113,9 @@ in
       eval "$(/opt/homebrew/bin/brew shellenv)"
       fish_add_path ~/.npm-packages/bin
       fish_add_path ~/.cargo/bin
+      fish_add_path ~/.manual_bin
+      fish_add_path ~/.krew/bin
+
     '';
   };
   

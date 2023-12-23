@@ -43,26 +43,43 @@ language-servers = [ "tailwind" ]
 auto-format = true
 
 [[language]]
-name = "html"
-scope = "text.html.basic"
-injection-regex = "html"
-file-types = ["html"]
-language-servers = ["tailwind", "vscode-html-language-server"]
-roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json"]
-auto-format = true
-indent = { tab-width = 4, unit = "\t" }
-formatter = { command = 'prettier', args = ["--parser", "html", "--plugin-search-dir", "/Users/erz/.npm-packages/lib" ]}
+name = "kcl"
+file-types = ["k"]
+scope = "source.kcl"
+roots = []
+injection-regex = "kcl"
+# auto-format = true
+comment-token = "#"
+language-servers = [ "kcl" ]
 
-[[language]]
-name = "rust"
-scope = "source.rust"
-injection-regex = "rust"
-file-types = ["rs"]
-roots = ["Cargo.toml", "Cargo.lock"]
-auto-format = true
-comment-token = "//"
-language-servers = [ "tailwind-hack", "rust-analyzer" ]
-indent = { tab-width = 4, unit = "    " }
+[language-server.kcl]
+command = "kcl-language-server"
+config = {}
+timeout = 3
+
+
+
+# [[language]]
+# name = "html"
+# scope = "text.html.basic"
+# injection-regex = "html"
+# file-types = ["html"]
+# language-servers = ["tailwind", "vscode-html-language-server"]
+# roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json"]
+# auto-format = true
+# indent = { tab-width = 4, unit = "\t" }
+# formatter = { command = 'prettier', args = ["--parser", "html", "--plugin-search-dir", "/Users/erz/.npm-packages/lib" ]}
+
+# [[language]]
+# name = "rust"
+# scope = "source.rust"
+# injection-regex = "rust"
+# file-types = ["rs"]
+# roots = ["Cargo.toml", "Cargo.lock"]
+# auto-format = true
+# comment-token = "//"
+# language-servers = [ "tailwind-hack", "rust-analyzer" ]
+# indent = { tab-width = 4, unit = "    " }
 
 # [[language]]
 # name = "rsx"
@@ -78,12 +95,12 @@ indent = { tab-width = 4, unit = "    " }
 # # formatter = { command = "dioxus", args = ["fmt"] }
 
 
-[language-server.gopls.config]
-env = { GOPACKAGESDRIVER = './common/bazel/tools/go/gopackagesdriver.sh', GOROOT = '/Users/erz/Documents/work/urus_23/monorepo/bazel-monorepo/external/go_sdk'}
-gofumpt     = true
-staticcheck = true
-local = "github.com/my/mypkg"
-directoryFilters = ["-bazel-bin","-bazel-out","-bazel-testlogs","-bazel-mypkg"]
-usePlaceholders = true
-semanticTokens = true
-codelenses = {gc_details=false, generate=false, regenerate_cgo=false, tidy=false, upgrade_dependency=false, vendor=false}
+# [language-server.gopls.config]
+# env = { GOPACKAGESDRIVER = './common/bazel/tools/go/gopackagesdriver.sh', GOROOT = '/Users/erz/Documents/work/urus_23/monorepo/bazel-monorepo/external/go_sdk'}
+# gofumpt     = true
+# staticcheck = true
+# local = "github.com/my/mypkg"
+# directoryFilters = ["-bazel-bin","-bazel-out","-bazel-testlogs","-bazel-mypkg"]
+# usePlaceholders = true
+# semanticTokens = true
+# codelenses = {gc_details=false, generate=false, regenerate_cgo=false, tidy=false, upgrade_dependency=false, vendor=false}

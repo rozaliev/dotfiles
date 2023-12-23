@@ -13,6 +13,7 @@ rulers = [100,120]
 idle-timeout = 50
 shell = ["fish", "-c"]
 bufferline = "multiple"
+text-width = 100
 
 [editor.whitespace.render]
 space = "all"

@@ -61,12 +61,23 @@
     go
     gopls
     golangci-lint-langserver
-    vscode
     buck2
     bazel-buildtools
-    mpv
     tokei
     arcanist
+    tree
+    git-branchless
+    krew
+    roapi-http
+    kubernetes-helm
+    argocd
+    kustomize
+    kubectl
+    kubectx
+    cue
+    duti
+    mkcert
+    dyff
   ];
 
 
@@ -90,6 +101,8 @@
   };
   homebrew.taps = [
     "koekeishiya/formulae"
+    "kcl-lang/tap"
+    
   ];
   homebrew.brews = [
     "yabai"
@@ -101,12 +114,23 @@
     "bazelisk"
     "lima"
     "sapling"
+    "u-boot-tools"
+    "watch"
+    "kubevela"
+    "broot"
+    "nss"
+    "kcl"
+    "kcl-lsp"
   ];
   homebrew.casks = [
     "firefox"
     "obsidian"
     "telegram-desktop"
     "mattermost"
+    "yandex-cloud-cli"
+    "keymapp"
+    "mpv"
+    "docker"
   ];
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
