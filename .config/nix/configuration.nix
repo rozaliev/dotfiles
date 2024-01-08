@@ -101,7 +101,6 @@
   };
   homebrew.taps = [
     "koekeishiya/formulae"
-    "kcl-lang/tap"
     
   ];
   homebrew.brews = [
@@ -116,11 +115,8 @@
     "sapling"
     "u-boot-tools"
     "watch"
-    "kubevela"
     "broot"
     "nss"
-    "kcl"
-    "kcl-lsp"
   ];
   homebrew.casks = [
     "firefox"
@@ -131,6 +127,7 @@
     "keymapp"
     "mpv"
     "docker"
+    "whisky"
   ];
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
