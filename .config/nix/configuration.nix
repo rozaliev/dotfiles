@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, inputs,... }:
 {
    imports = [ ./services/languagetool.nix ];
 
@@ -61,7 +61,6 @@
     go
     gopls
     golangci-lint-langserver
-    buck2
     bazel-buildtools
     tokei
     arcanist
@@ -78,6 +77,11 @@
     duti
     mkcert
     dyff
+    helix-jump
+    yamllint
+    shellcheck
+  ] ++ [
+      inputs.scls.defaultPackage.${system}
   ];
 
 
@@ -101,6 +105,8 @@
   };
   homebrew.taps = [
     "koekeishiya/formulae"
+    "homebrew/cask-fonts"
+    "kcl-lang/tap"
     
   ];
   homebrew.brews = [
@@ -117,6 +123,8 @@
     "watch"
     "broot"
     "nss"
+    "kcl"
+    "kcl-lsp"
   ];
   homebrew.casks = [
     "firefox"
@@ -128,6 +136,9 @@
     "mpv"
     "docker"
     "whisky"
+    "font-symbols-only-nerd-font"
+    "discord"
+    "private-internet-access"
   ];
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;

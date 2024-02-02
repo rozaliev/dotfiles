@@ -4,7 +4,8 @@ inherits = "dracula"
 "ui.virtual.indent-guide" = { fg = "virt-symb"} 
 "ui.virtual.whitespace" = { fg = "virt-symb"} 
 "ui.virtual.inlay-hint" = { fg = "virt-text" }
+"ui.virtual.jump-label" = { fg = "red", modifiers = ["bold"] }
 
 [palette]
-virt-symb = "#3E3052"
+virt-symb = "#4f5167"
 virt-text = "#564372"

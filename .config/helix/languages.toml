@@ -2,6 +2,10 @@
 vscode-css-language-server = { command = "vscode-css-language-server", args = ["--stdio"], config = { "provideFormatter" = true }}
 vscode-html-language-server = { command = "vscode-html-language-server", args = ["--stdio"], config = { provideFormatter = true } }
 
+[language-server.scls]
+command = "simple-completion-language-server"
+
+
 [language-server.emmet-ls]
 args = ["--stdio"]
 command="emmet-ls"
@@ -28,7 +32,7 @@ timeout = 3
 [[language]]
 name = "markdown"
 language-servers = ["ltex", "marksman"]
-file-types = ["md", "txt"]
+file-types = ["md", "txt", "scls"]
 scope = "source.markdown"
 roots = []
 
@@ -43,6 +47,26 @@ language-servers = [ "tailwind" ]
 auto-format = true
 
 [[language]]
+name = "rust"
+language-servers = [ "scls", "rust-analyzer" ]
+
+[[language]]
+name = "git-commit"
+language-servers = [ "scls" ]
+
+[[language]]
+name = "go"
+language-servers = [ "scls", "gopls" ]
+
+[[language]]
+name = "nix"
+language-servers = [ "scls", "nil" ]
+
+[[language]]
+name = "cue"
+language-servers = [ "scls", "cuepls" ]
+
+ [[language]]
 name = "kcl"
 file-types = ["k"]
 scope = "source.kcl"
@@ -50,14 +74,12 @@ roots = []
 injection-regex = "kcl"
 # auto-format = true
 comment-token = "#"
-language-servers = [ "kcl" ]
+language-servers = [ "kcl", "scls"]
 
 [language-server.kcl]
 command = "kcl-language-server"
 config = {}
 timeout = 3
-
-
 
 # [[language]]
 # name = "html"

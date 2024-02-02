@@ -17,13 +17,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    scls = {
+      url = "github:estin/simple-completion-language-server";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    helix-jump = {
+      url = "github:pascalkuthe/helix?ref=amp-jump";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@ { nixpkgs, home-manager, nurpkgs, darwin, mkAlias, ... }:
+  outputs = inputs@ { nixpkgs, home-manager, nurpkgs, darwin, mkAlias, scls, helix-jump, ... }:
     let
       system = "aarch64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
-            
+
     in {
       darwinConfigurations."erz-mbp" = darwin.lib.darwinSystem {
         inherit system inputs;
@@ -38,45 +47,11 @@
               
               nixpkgs.overlays = [
                 nurpkgs.overlay
+                (_: _: { helix-jump = helix-jump.packages.${system}.default; })
               ];
-
 
             }
         ];
       };
-
-    
-      # defaultPackage.${system} = home-manager.defaultPackage.${system};
-      # homeConfigurations."erz" = home-manager.lib.homeManagerConfiguration {
-      #   inherit pkgs;
-
-      #   # Specify your home configuration modules here, for example,
-      #   # the path to your home.nix.
-      #   modules = [ 
-      #     {
-      #         nixpkgs = {
-      #           config = {
-      #             allowUnfree = true;
-      #             allowUnfreePredicate = (_: true);
-      #           };
-      #         };
-      #       } {
-      #         nixpkgs.config.allowUnfree = true;
-      #       }
-
-      #      ./home.nix 
-
-      #       nurpkgs.nixosModules.nur
-      #       {
-      #           nixpkgs.overlays = [
-      #             nurpkgs.overlay
-      #           ];
-
-      #       }
-      #   ];
-
-      #   # Optionally use extraSpecialArgs
-      #   # to pass through arguments to home.nix
-      # };
     };
 }

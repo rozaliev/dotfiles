@@ -14,6 +14,7 @@ idle-timeout = 50
 shell = ["fish", "-c"]
 bufferline = "multiple"
 text-width = 100
+jump-label-alphabet = "tnhesoai"
 
 [editor.whitespace.render]
 space = "all"
@@ -69,8 +70,13 @@ F = "file_picker_in_current_buffer_directory" # useful for accessing sibling fil
 o = "file_picker_in_current_buffer_directory"
 
 [keys.normal]
+h = "no_op"
+j = "no_op"
+l = "no_op"
 q = "no_op"
 Q = "no_op"
+k = "replay_macro"
+K = "record_macro"
 B = "extend_prev_word_start"
 W = "extend_next_word_end"
 X = "extend_line_above"
@@ -83,6 +89,8 @@ d = ["yank_main_selection_to_clipboard", "delete_selection"]
 R = ["replace_selections_with_clipboard"]
 pageup = "half_page_up"
 pagedown = "half_page_down"
+"C-pageup" = "goto_previous_buffer"
+"C-pagedown" = "goto_next_buffer"
 
 
 [keys.select]

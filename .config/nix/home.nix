@@ -96,9 +96,6 @@ in
       };
     };
 
-  helix = { 
-    enable = true;
-  };
   git = {
     enable = true;
     userName = "Evgeny Rozaliev";
